@@ -1,7 +1,8 @@
-FROM python:2.7-alpine3.4
+FROM centos:7
 
 RUN set -ex \
-    && apk add --no-cache ca-certificates apache2-utils
+    && yum install -y ca-certificates \
+    && yum clean all
 
 COPY ./registry/registry /bin/registry
 COPY ./registry/config-example.yml /etc/docker/registry/config.yml
